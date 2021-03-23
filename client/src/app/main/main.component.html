@@ -1,0 +1,41 @@
+
+<div class="marginTop form-group">
+  <label for="twopp"> 2 Point FG% </label>
+  <input type="number" class="form-control" id="twopp" required [(ngModel)] = "predictModel.twopp" placeholder=".50">
+  <label for="tpp"> 3 Point FG% </label>
+  <input type="number" class="form-control" id="tpp" required [(ngModel)] = "predictModel.tpp" placeholder=".35">
+  <label for="tppt"> % of Shots Taken as 3 Pointers </label>
+  <input type="number" class="form-control" id="tppt" required [(ngModel)] = "predictModel.tppt" placeholder=".15">
+  <label for="w"> Total Wins (can be a prediction by extrapolation) </label>
+  <input type="number" class="form-control" id="w" required [(ngModel)] = "predictModel.w" placeholder="45">
+  <button type="button" class="btn btn-default" (click)="predictSeason()">Predict</button>
+</div>
+<div class="marginTop">
+  <h2>{{predictResult}}</h2>
+</div>
+<div id="chartDesc marginTop" class="justify">
+</div>
+<p class="justify">
+  The chart below shows the relation between games won and different shot percentages. As games won is the single best predictor of whether or not a team makes the playoffs, this is a 
+  useful chart for visulaizing what metrics matter the most. In this graph, it looks like 2 point shot percentage is a better predictor of games won than either 3 point shot percentage
+  or percentage of total shots as 3 point shots. 
+</p>
+<div div="shotChart" style="margin-top: 20px">
+  <div id="shotPercChartContainer" style="height: 370px; width: 95%;"></div>
+</div>
+<div id="playoffChart" style="margin-top: 20px">
+  <p class = "justify">
+    This chart shows the discrepancies between the neural network's prediction of whether a team makes the playoffs and the actual playoff result of that team's season, compared against
+    the number of games won by that team. From the chart, it is seen that the neural network had a high degree of accuracy in its predictions, with the three incorrect predictions occurring 
+    at the low end of games needed to make the playoffs on average. 
+  </p>
+  <div id="playoffSuccessChartContainer" style="height: 370px; width: 95%;"></div>
+</div>
+<div id="threePointChart" style="margin-top: 20px">
+  <p class = "justify">
+    Below is a chart comparing the percentage of total shots as three point shots against the 3 point percentage for that team. The expectation is that there should be a linear increase in 
+    three point percentage as the percentage of total shots as three pointers increases, given that most teams should be shooting the shots they're most comfortable/best at. While that
+    relationship is visible, the correlation is not as strong as anticipated, and there are numerous outliers. 
+  </p>
+  <div id="threePointChartContainer" style="height: 370px; width: 95%;"></div>
+</div>
